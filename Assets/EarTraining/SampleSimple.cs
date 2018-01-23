@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +15,7 @@ public class SampleSimple : MonoBehaviour {
     ToneParam pianoParam = new ToneParam("2,7, 28, 4, 0, 5, 1,37, 2, 1, 3, 0 22, 9, 1, 2, 1,47, 2,12, 0, 0 29, 4, 3, 6, 1,37, 1, 3, 7, 0 18, 8, 0, 6, 6, 0, 2, 1, 0, 0");
     ToneParam hornParam = new ToneParam("5,7, 15,10, 0, 6, 5,35, 0, 1, 0, 0 15, 5, 0, 8, 2, 6, 0, 2, 2, 0 15, 5, 0, 8, 2, 6, 0, 1, 5, 0 15, 5, 0, 8, 2, 6, 0, 1, 0, 0");
 
-    private int instrument { get; set; }
+    public int instrument = 0;
 
     public RangeValue score;
     public RangeValue streak;
@@ -179,7 +179,7 @@ public class SampleSimple : MonoBehaviour {
             playHelpSong(actualDiff);
             playIntervalButtonText.text = "Next Interval";
 
-            int neededForNextLevel = 2 * level * level;
+            int neededForNextLevel = 1 * level * level;
             toNextLevelText.text = "Needed for next level: " + neededForNextLevel.ToString();
 
             if (score.current >= neededForNextLevel) {
@@ -192,7 +192,7 @@ public class SampleSimple : MonoBehaviour {
     }
 
 
-    private Queue<int> intervalLevels = new Queue<int>(new[]{1, 11, 9, 5, 4, 12, 2, 8, 10, 6});
+    private Queue<int> intervalLevels = new Queue<int>(new[]{3, 1, 11, 9, 5, 4, 12, 2, 8, 10, 6});
     private void goToNextLevel() {
         int nextLevelInterval = intervalLevels.Dequeue();
         possibleIntervals.list.Add(nextLevelInterval);
